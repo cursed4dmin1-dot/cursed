@@ -15,42 +15,30 @@
             overflow-x: hidden;
             font-size: 14px;
             line-height: 1.2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* KONTENER */
         .container {
+            width: 100%;
             max-width: 800px;
             margin: 0 auto;
         }
 
-/* TWOJE ASCII ART */
-.custom-ascii {
-    white-space: pre;
-    color: #ff0000;
-    font-weight: bold;
-    margin-bottom: 40px;
-    
-    /* KLUCZOWE ZMIANY: */
-    font-size: 1.5vw;       /* Czcionka skaluje się do szerokości ekranu */
-    line-height: 1.1;
-    display: block;
-    width: fit-content;    /* Kontener zwęża się do szerokości tekstu */
-    margin-left: auto;     /* Wyśrodkowanie lewo-prawo */
-    margin-right: auto;
-}
-
-/* Ustawienia specjalnie pod telefon */
-@media (max-width: 600px) {
-    .custom-ascii {
-        font-size: 3.5vw;  /* Na telefonach czcionka będzie nieco większa, by była czytelna */
-    }
-}
-
-/* Ustawienia specjalnie pod telefon */
-@media (max-width: 600px) {
-    .custom-ascii {
-        font-size: 3.5vw;  /* Na telefonach czcionka będzie nieco większa, by była czytelna */
-    }
+        /* GÓRNE ASCII ART - SKALOWALNE */
+        .custom-ascii {
+            white-space: pre;
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.2vw; /* Skalowanie do szerokości ekranu */
+            line-height: 1.1;
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
 
         /* TYTUŁY SEKCJI */
         .glitch-text {
@@ -62,7 +50,7 @@
             display: inline-block;
         }
 
-        /* ODTWARZACZ DEMO / SNIPPET */
+        /* ODTWARZACZ */
         .demo-box {
             background: #0a0a0a;
             border: 1px dashed #33ff00;
@@ -72,15 +60,15 @@
 
         audio {
             filter: invert(100%) grayscale(100%) brightness(1.5);
-            height: 25px;
+            height: 30px;
             width: 100%;
             margin-top: 10px;
         }
 
-        /* PRZYCISKI STREAMINGOWE */
+        /* PRZYCISKI */
         .streaming-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 10px;
             margin-top: 20px;
         }
@@ -94,11 +82,26 @@
             text-transform: uppercase;
             font-weight: bold;
             transition: 0.1s;
+            font-size: 12px;
         }
 
         .stream-btn:hover {
             background-color: #33ff00;
             color: #000;
+        }
+
+        /* DOLNE ASCII ART - SKALOWALNE */
+        .bottom-ascii {
+            color: #ff0000;
+            font-weight: bold;
+            font-size: 1.5vw; /* Skalowanie */
+            line-height: 1.1;
+            white-space: pre;
+            text-align: center;
+            margin-top: 60px;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            width: 100%;
         }
 
         /* EFEKT STAREGO MONITORA */
@@ -116,25 +119,22 @@
 
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
-		.bottom-ascii {
-    color: #ff0000; /* Czysta czerwień */
-    font-weight: bold;
-    font-size: 10px; /* Mała czcionka, żeby się zmieściło */
-    line-height: 10px;
-    white-space: pre; /* Zachowuje spacje */
-    text-align: center; /* Wyśrodkowanie */
-    margin-top: 60px; /* Odstęp od reszty strony */
-    margin-bottom: 20px;
-    opacity: 0.8;
-    overflow-x: hidden; /* Ukrywa pasek przewijania, jeśli za szerokie */
 
+        /* POPRAWKI DLA TELEFONÓW */
+        @media (max-width: 600px) {
+            .custom-ascii, .bottom-ascii {
+                font-size: 2.5vw; /* Większe na małych ekranach */
+            }
+            body { padding: 10px; }
+            .glitch-text { font-size: 1.2em; }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
 
-<div class="custom-ascii">
+    <div class="custom-ascii">
  ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░ ░▒▓███████▓▒░▒▓████████▓▒░▒▓███████▓▒░         
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░        
 ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░        
@@ -142,10 +142,7 @@
 ░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░        
 ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░      ░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓██▓▒░ 
  ░▒▓██████▓▒░ ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░░▒▓████████▓▒░▒▓███████▓▒░░▒▓██▓▒░ 
-                                                                                       
-                                                                                       
-  
-</div>
+    </div>
 
     <p>PROJECT: <span style="color:red">cursed.</span></p>
     <p>STATUS: UNSTABLE_BUILD</p>
@@ -169,50 +166,17 @@
         <a href="LINK_YT" class="stream-btn" target="_blank">[ YouTube ]</a>
     </div>
 
-   <div class="glitch-text">/// SYSTEM_LOGS ///</div>
-    <p id="typewriter" style="font-size: 12px; color: #666; min-height: 60px;">
-        </p>
+    <div class="glitch-text">/// SYSTEM_LOGS ///</div>
+    <p id="typewriter" style="font-size: 12px; color: #666; min-height: 80px;"></p>
+    
     <br><br>
     <hr style="border: 0; border-top: 1px dashed #33ff00;">
     <p style="font-size: 10px; opacity: 0.5;">
-        © 2025 cursed.records // <a href="mailto:admin@cursed.com">SEND_FEEDBACK</a>
+        © 2025 cursed.records // <a href="mailto:admin@cursed.com" style="color: #33ff00;">SEND_FEEDBACK</a>
     </p>
 
 </div>
-<script>
-    const textElement = document.getElementById('typewriter');
-    const logs = [
-        "- Brak wykrytych błędów w ścieżce audio.",
-        "- Synchronizacja z zewnętrznymi serwerami... OK.",
-        "- Manifest usunięty na żądanie administratora."
-    ];
 
-    let lineIndex = 0;
-    let charIndex = 0;
-
-    function typeWriter() {
-        if (lineIndex < logs.length) {
-            if (charIndex < logs[lineIndex].length) {
-                // Dodaj literę
-                textElement.innerHTML += logs[lineIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 30); // Prędkość pisania (w ms)
-            } else {
-                // Przejdź do nowej linii
-                textElement.innerHTML += "<br>";
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(typeWriter, 500); // Pauza między liniami
-            }
-        } else {
-            // Dodaj migający kursor na końcu logów
-            textElement.innerHTML += '<span class="blink">_</span>';
-        }
-    }
-
-    // Uruchom po załadowaniu okna
-    window.onload = typeWriter;
-</script>
 <div class="bottom-ascii">
 @@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@#==-@@@@@@@@@@@@@@@@@@@@@@@%+=-=*@@@@@@@
@@ -220,7 +184,7 @@
 @@@@@@@%+*-:....:#@@@@@@@@@@@@=-......=#%@@@@@@@
 @@@@@@@@@@=:....::.%@@@@@@@@%.:......:+#@@@@@@@@
 @@@@@@@@@%+:.....-.*@@@@@@@@+......:=#*+@@@@@@@@
-@@@@@@@@@@%+-:...:-.  =@@@@=.:. ..::-+%@@@@@@@@@
+@@@@@@@@@@%+-:...:-.   =@@@@=.:. ..::-+%@@@@@@@@@
 @@@@@@@@@@@@#=...-=+-..:. :---..::-%@@@@@@@@@@@@
 @@@@@@@@@@@@@%=:.-+=##*-.  :-...:=#@@@@@@@@@@@@@
 @@@@@@@@@@@@@@%=..=*@@*:.--:...:*@@@@@@@@@@@@@@@
@@ -240,12 +204,37 @@
 @@@@@@@@@@@@@@@@@@@@###@@***##%@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-   SYSTEM_FAILURE
+               SYSTEM_FAILURE
 </div>
 
+<script>
+    const textElement = document.getElementById('typewriter');
+    const logs = [
+        "- Brak wykrytych błędów w ścieżce audio.",
+        "- Synchronizacja z zewnętrznymi serwerami... OK.",
+    ];
+
+    let lineIndex = 0;
+    let charIndex = 0;
+
+    function typeWriter() {
+        if (lineIndex < logs.length) {
+            if (charIndex < logs[lineIndex].length) {
+                textElement.innerHTML += logs[lineIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 30);
+            } else {
+                textElement.innerHTML += "<br>";
+                lineIndex++;
+                charIndex = 0;
+                setTimeout(typeWriter, 500);
+            }
+        } else {
+            textElement.innerHTML += '<span class="blink">_</span>';
+        }
+    }
+    window.onload = typeWriter;
+</script>
+
 </body>
-
 </html>
-
-
-
