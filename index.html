@@ -15,16 +15,21 @@
             overflow-x: hidden;
             font-size: 14px;
             line-height: 1.2;
+            /* Wyśrodkowanie całej zawartości body */
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
         }
 
-        /* KONTENER */
+        /* KONTENER - WSZYSTKO WEWNĄTRZ JEST NA ŚRODKU */
         .container {
             width: 100%;
             max-width: 800px;
-            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Środkowanie elementów w poziomie */
+            text-align: center;    /* Środkowanie tekstu */
         }
 
         /* GÓRNE ASCII ART - SKALOWALNE */
@@ -32,11 +37,16 @@
             white-space: pre;
             color: #ff0000;
             font-weight: bold;
-            margin-bottom: 20px;
-            font-size: 1.2vw; /* Skalowanie do szerokości ekranu */
+            margin-bottom: 30px;
+            font-size: 1.2vw;
             line-height: 1.1;
-            text-align: center;
             display: block;
+            width: 100%;
+        }
+
+        /* STYL DLA PARAGRAFÓW (PROJECT, STATUS) */
+        p {
+            margin: 5px 0;
             width: 100%;
         }
 
@@ -44,45 +54,50 @@
         .glitch-text {
             font-size: 1.5em;
             text-transform: uppercase;
-            margin-top: 50px;
+            margin-top: 40px;
             margin-bottom: 20px;
             border-bottom: 1px solid #33ff00;
             display: inline-block;
+            padding-bottom: 5px;
         }
 
         /* ODTWARZACZ */
         .demo-box {
             background: #0a0a0a;
             border: 1px dashed #33ff00;
-            padding: 15px;
+            padding: 20px;
             margin-bottom: 20px;
+            width: 90%; /* Dopasowanie szerokości na telefonie */
+            box-sizing: border-box;
         }
 
         audio {
             filter: invert(100%) grayscale(100%) brightness(1.5);
             height: 30px;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
-        /* PRZYCISKI */
+        /* PRZYCISKI STREAMINGOWE */
         .streaming-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+            width: 100%;
         }
 
         .stream-btn {
             border: 1px solid #33ff00;
             color: #33ff00;
-            padding: 10px;
-            text-align: center;
+            padding: 12px 20px;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: bold;
-            transition: 0.1s;
+            transition: 0.2s;
             font-size: 12px;
+            min-width: 120px;
         }
 
         .stream-btn:hover {
@@ -90,11 +105,20 @@
             color: #000;
         }
 
-        /* DOLNE ASCII ART - SKALOWALNE */
+        /* SYSTEM LOGS BOX */
+        #typewriter {
+            font-size: 12px;
+            color: #666;
+            min-height: 80px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* DOLNE ASCII ART */
         .bottom-ascii {
             color: #ff0000;
             font-weight: bold;
-            font-size: 1.5vw; /* Skalowanie */
+            font-size: 1.4vw;
             line-height: 1.1;
             white-space: pre;
             text-align: center;
@@ -111,7 +135,7 @@
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
             background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
-                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             z-index: 1000;
             background-size: 100% 2px, 3px 100%;
             pointer-events: none;
@@ -120,13 +144,13 @@
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
 
-        /* POPRAWKI DLA TELEFONÓW */
+        /* DOPASOWANIE DLA TELEFONÓW */
         @media (max-width: 600px) {
             .custom-ascii, .bottom-ascii {
-                font-size: 2.5vw; /* Większe na małych ekranach */
+                font-size: 2.8vw; /* Powiększenie ASCII na małym ekranie */
             }
-            body { padding: 10px; }
             .glitch-text { font-size: 1.2em; }
+            .stream-btn { width: 100%; } /* Przyciski na całą szerokość na telefonie */
         }
     </style>
 </head>
@@ -149,7 +173,6 @@
     <p>USER_AUTH: SUCCESS... <span class="blink">_</span></p>
 
     <div class="glitch-text">/// DEMO_PREVIEW ///</div>
-
     <div class="demo-box">
         <span>FILE: snippet_082.mp3 [RAW_UNMASTERED]</span><br>
         <audio controls>
@@ -159,25 +182,22 @@
     </div>
 
     <div class="glitch-text">/// EXTERNAL_NODES ///</div>
-    
     <div class="streaming-grid">
-        <a href="LINK_SPOTIFY" class="stream-btn" target="_blank">[ Spotify ]</a>
-        <a href="LINK_APPLE" class="stream-btn" target="_blank">[ Apple Music ]</a>
-        <a href="LINK_YT" class="stream-btn" target="_blank">[ YouTube ]</a>
+        <a href="#" class="stream-btn" target="_blank">[ Spotify ]</a>
+        <a href="#" class="stream-btn" target="_blank">[ Apple Music ]</a>
+        <a href="#" class="stream-btn" target="_blank">[ YouTube ]</a>
     </div>
 
     <div class="glitch-text">/// SYSTEM_LOGS ///</div>
-    <p id="typewriter" style="font-size: 12px; color: #666; min-height: 80px;"></p>
+    <p id="typewriter"></p>
     
     <br><br>
-    <hr style="border: 0; border-top: 1px dashed #33ff00;">
+    <hr style="border: 0; border-top: 1px dashed #33ff00; width: 100%;">
     <p style="font-size: 10px; opacity: 0.5;">
         © 2025 cursed.records // <a href="mailto:admin@cursed.com" style="color: #33ff00;">SEND_FEEDBACK</a>
     </p>
 
-</div>
-
-<div class="bottom-ascii">
+    <div class="bottom-ascii">
 @@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@#==-@@@@@@@@@@@@@@@@@@@@@@@%+=-=*@@@@@@@
 @@@@@@@%+:::.:*#@@@@@@@@@@@@@@@@=::...:+#@@@@@@@
@@ -205,6 +225,8 @@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                SYSTEM_FAILURE
+    </div>
+
 </div>
 
 <script>
@@ -212,6 +234,7 @@
     const logs = [
         "- Brak wykrytych błędów w ścieżce audio.",
         "- Synchronizacja z zewnętrznymi serwerami... OK.",
+        "- Manifest usunięty na żądanie administratora."
     ];
 
     let lineIndex = 0;
