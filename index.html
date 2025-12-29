@@ -10,49 +10,49 @@
             background-color: #000000;
             color: #33ff00;
             font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
+            padding: 15px;
             margin: 0;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Blokuje suwak poziomy */
             font-size: 14px;
             line-height: 1.2;
-            /* Wyśrodkowanie całej zawartości body */
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* KONTENER - WSZYSTKO WEWNĄTRZ JEST NA ŚRODKU */
+        /* KONTENER */
         .container {
             width: 100%;
             max-width: 800px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Środkowanie elementów w poziomie */
-            text-align: center;    /* Środkowanie tekstu */
+            align-items: center;
+            text-align: center;
         }
 
-        /* GÓRNE ASCII ART - SKALOWALNE */
+        /* GÓRNE ASCII ART - ZMNIEJSZONE */
         .custom-ascii {
             white-space: pre;
             color: #ff0000;
             font-weight: bold;
             margin-bottom: 30px;
-            font-size: 1.2vw;
-            line-height: 1.1;
+            font-size: 0.85vw; /* Agresywne skalowanie */
+            line-height: 1;
             display: block;
             width: 100%;
+            overflow: hidden;
         }
 
-        /* STYL DLA PARAGRAFÓW (PROJECT, STATUS) */
+        /* STATUSY */
         p {
-            margin: 5px 0;
+            margin: 8px 0;
             width: 100%;
         }
 
         /* TYTUŁY SEKCJI */
         .glitch-text {
-            font-size: 1.5em;
+            font-size: 1.4em;
             text-transform: uppercase;
             margin-top: 40px;
             margin-bottom: 20px;
@@ -67,23 +67,23 @@
             border: 1px dashed #33ff00;
             padding: 20px;
             margin-bottom: 20px;
-            width: 90%; /* Dopasowanie szerokości na telefonie */
+            width: 95%;
             box-sizing: border-box;
         }
 
         audio {
             filter: invert(100%) grayscale(100%) brightness(1.5);
-            height: 30px;
+            height: 35px;
             width: 100%;
             margin-top: 15px;
         }
 
-        /* PRZYCISKI STREAMINGOWE */
+        /* PRZYCISKI */
         .streaming-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             margin-top: 10px;
             width: 100%;
         }
@@ -91,13 +91,15 @@
         .stream-btn {
             border: 1px solid #33ff00;
             color: #33ff00;
-            padding: 12px 20px;
+            padding: 12px 15px;
             text-decoration: none;
             text-transform: uppercase;
             font-weight: bold;
             transition: 0.2s;
-            font-size: 12px;
+            font-size: 11px;
+            flex: 1; /* Przyciski równej szerokości */
             min-width: 120px;
+            max-width: 200px;
         }
 
         .stream-btn:hover {
@@ -105,36 +107,37 @@
             color: #000;
         }
 
-        /* SYSTEM LOGS BOX */
+        /* LOGI */
         #typewriter {
-            font-size: 12px;
+            font-size: 11px;
             color: #666;
-            min-height: 80px;
+            min-height: 70px;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 15px;
         }
 
-        /* DOLNE ASCII ART */
+        /* DOLNE ASCII - MNIEJSZE */
         .bottom-ascii {
             color: #ff0000;
             font-weight: bold;
-            font-size: 1.4vw;
-            line-height: 1.1;
+            font-size: 1vw;
+            line-height: 1;
             white-space: pre;
             text-align: center;
-            margin-top: 60px;
+            margin-top: 50px;
             margin-bottom: 40px;
-            opacity: 0.8;
+            opacity: 0.7;
             width: 100%;
+            overflow: hidden;
         }
 
-        /* EFEKT STAREGO MONITORA */
+        /* SCANLINES */
         body::after {
             content: " ";
             display: block;
             position: fixed;
             top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%), 
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
                         linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
             z-index: 1000;
             background-size: 100% 2px, 3px 100%;
@@ -144,13 +147,13 @@
         .blink { animation: blinker 1s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
 
-        /* DOPASOWANIE DLA TELEFONÓW */
+        /* TELEFONY */
         @media (max-width: 600px) {
-            .custom-ascii, .bottom-ascii {
-                font-size: 2.8vw; /* Powiększenie ASCII na małym ekranie */
-            }
-            .glitch-text { font-size: 1.2em; }
-            .stream-btn { width: 100%; } /* Przyciski na całą szerokość na telefonie */
+            .custom-ascii { font-size: 2vw; } /* Na telefonie musi być czytelne, ale nie za duże */
+            .bottom-ascii { font-size: 2.3vw; }
+            .streaming-grid { flex-direction: column; align-items: center; }
+            .stream-btn { width: 90%; max-width: none; }
+            .glitch-text { font-size: 1.1em; }
         }
     </style>
 </head>
