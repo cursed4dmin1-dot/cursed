@@ -23,15 +23,27 @@
             margin: 0 auto;
         }
 
-        /* TWOJE ASCII ART */
-        .custom-ascii {
-            white-space: pre;
-            color: #ff0000; /* Czerwony dla kontrastu */
-            font-weight: bold;
-            margin-bottom: 40px;
-            font-size: 8px;
-            line-height: 1;
-        }
+/* TWOJE ASCII ART */
+.custom-ascii {
+    white-space: pre;
+    color: #ff0000;
+    font-weight: bold;
+    margin-bottom: 40px;
+    
+    /* KLUCZOWE ZMIANY: */
+    font-size: 1.5vw;       /* Czcionka skaluje się do szerokości ekranu */
+    line-height: 1.1;
+    display: block;
+    width: fit-content;    /* Kontener zwęża się do szerokości tekstu */
+    margin-left: auto;     /* Wyśrodkowanie lewo-prawo */
+    margin-right: auto;
+}
+
+/* Ustawienia specjalnie pod telefon */
+@media (max-width: 600px) {
+    .custom-ascii {
+        font-size: 3.5vw;  /* Na telefonach czcionka będzie nieco większa, by była czytelna */
+    }
 
         /* TYTUŁY SEKCJI */
         .glitch-text {
@@ -227,4 +239,5 @@
 </body>
 
 </html>
+
 
